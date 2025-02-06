@@ -1,0 +1,25 @@
+.container {
+    max-width: 500px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  form .form-check {
+    text-align: left;
+  }
+  

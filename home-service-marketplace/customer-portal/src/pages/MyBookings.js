@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import CustomNavbar from "../components/Navbar";
-import { Container, Button, ListGroup, Modal, Form } from "react-bootstrap";
+import { Container, Button, Card, Modal, Form } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 const MyBookings = () => {
-  const navigate = useNavigate();
   const [bookings, setBookings] = useState([
-    { id: 1, service: "Plumbing", provider: "John Plumbing", status: "Active", date: "2025-02-10", time: "10:00 AM", price: "$50" },
-    { id: 2, service: "Cleaning", provider: "CleanCo", status: "Completed", date: "2025-02-05", time: "2:00 PM", price: "$40" },
+    {
+      id: 1,
+      service: "Plumbing",
+      provider: "John Plumbing",
+      status: "Active",
+      date: "2025-02-10",
+      time: "10:00 AM",
+      price: "$50",
+    },
+    {
+      id: 2,
+      service: "Cleaning",
+      provider: "CleanCo",
+      status: "Completed",
+      date: "2025-02-05",
+      time: "2:00 PM",
+      price: "$40",
+    },
   ]);
   const [showModal, setShowModal] = useState(false);
   const [currentBooking, setCurrentBooking] = useState(null);
@@ -18,7 +32,7 @@ const MyBookings = () => {
   const [feedback, setFeedback] = useState("");
 
   const handleCancelBooking = (bookingId) => {
-    setBookings(bookings.filter(booking => booking.id !== bookingId));
+    setBookings(bookings.filter((booking) => booking.id !== bookingId));
   };
 
   const handleRescheduleBooking = (booking) => {
@@ -27,11 +41,13 @@ const MyBookings = () => {
   };
 
   const handleSubmitReschedule = () => {
-    setBookings(bookings.map(booking =>
-      booking.id === currentBooking.id
-        ? { ...booking, date: newDate, time: newTime }
-        : booking
-    ));
+    setBookings(
+      bookings.map((booking) =>
+        booking.id === currentBooking.id
+          ? { ...booking, date: newDate, time: newTime }
+          : booking
+      )
+    );
     setShowModal(false);
   };
 
@@ -49,43 +65,81 @@ const MyBookings = () => {
     <>
       <CustomNavbar />
       <Container className="mt-4">
-        <h3>My Bookings</h3>
-        <ListGroup>
-          {bookings.map((booking) => (
-            <ListGroup.Item key={booking.id} className="mb-3">
-              <h5>{booking.service} with {booking.provider}</h5>
-              <p>Date: {booking.date} | Time: {booking.time} | Price: {booking.price}</p>
-              <Button variant="warning" onClick={() => handleRescheduleBooking(booking)}>Reschedule</Button>
-              <Button variant="danger" onClick={() => handleCancelBooking(booking.id)} className="ms-2">Cancel</Button>
+        <h3 className="text-center text-primary mb-4">My Bookings</h3>
+
+        {bookings.map((booking) => (
+          <Card
+            key={booking.id}
+            className="mb-3 shadow-lg border-0 rounded bg-success"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Card.Body>
+              <h5 className="text-white">
+                {booking.service} with{" "}
+                <span className="text-black text-bold">{booking.provider}</span>
+              </h5>
+              <p className="text-black mb-2">
+                <strong>Date:</strong> {booking.date} | <strong>Time:</strong>{" "}
+                {booking.time} | <strong>Price:</strong> {booking.price}
+              </p>
+
+              <div className="d-flex gap-2">
+                <Button
+                  variant="warning"
+                  onClick={() => handleRescheduleBooking(booking)}
+                >
+                  Reschedule
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => handleCancelBooking(booking.id)}
+                >
+                  Cancel
+                </Button>
+              </div>
+
               {booking.status === "Completed" && (
-                <>
+                <div
+                  className="mt-3 p-3 bg-white rounded shadow-sm"
+                  style={{
+                    backgroundColor: "#f8f9fa",
+                    boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <h6 className="text-dark">Rate & Review</h6>
+                  <Form.Control
+                    as="textarea"
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                    placeholder="Write your feedback..."
+                    rows={2}
+                  />
                   <div className="mt-2">
-                    <h6>Rate & Review</h6>
-                    <Form.Control
-                      as="textarea"
-                      value={feedback}
-                      onChange={(e) => setFeedback(e.target.value)}
-                      placeholder="Write your feedback..."
-                      rows={3}
-                    />
-                    <div className="mt-2">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <FaStar
-                          key={star}
-                          size={20}
-                          color={star <= rating ? "#FFD700" : "#D3D3D3"}
-                          onClick={() => handleRatingChange(star)}
-                          style={{ cursor: "pointer", marginRight: 5 }}
-                        />
-                      ))}
-                    </div>
-                    <Button variant="primary" onClick={handleSubmitFeedback} className="mt-2">Submit Feedback</Button>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <FaStar
+                        key={star}
+                        size={22}
+                        color={star <= rating ? "#FFD700" : "#D3D3D3"}
+                        onClick={() => handleRatingChange(star)}
+                        style={{ cursor: "pointer", marginRight: 5 }}
+                      />
+                    ))}
                   </div>
-                </>
+                  <Button
+                    variant="primary"
+                    onClick={handleSubmitFeedback}
+                    className="mt-2"
+                  >
+                    Submit Feedback
+                  </Button>
+                </div>
               )}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
+            </Card.Body>
+          </Card>
+        ))}
 
         {/* Reschedule Modal */}
         <Modal show={showModal} onHide={() => setShowModal(false)}>

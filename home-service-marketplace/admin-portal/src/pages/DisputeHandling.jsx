@@ -62,9 +62,9 @@ const DisputeHandling = () => {
                 <td>{dispute.body}</td>
                 <td>{dispute.status || "Pending"}</td>
                 <td>
-                  <button className="btn btn-success btn-sm me-2" onClick={() => handleResolve(dispute.id)}>Resolve</button>
-                  <button className="btn btn-warning btn-sm me-2" onClick={() => handleEscalate(dispute.id)}>Escalate</button>
-                  <button className="btn btn-info btn-sm" onClick={() => handleStatusUpdate(dispute.id)}>Update Status</button>
+                  <button className="btn btn-success btn-sm m-1" onClick={() => handleResolve(dispute.id)}>Resolve</button>
+                  <button className="btn btn-warning btn-sm m-1" onClick={() => handleEscalate(dispute.id)}>Escalate</button>
+                  <button className="btn btn-info btn-sm m-1" onClick={() => handleStatusUpdate(dispute.id)}>Update Status</button>
                 </td>
               </tr>
             ))}

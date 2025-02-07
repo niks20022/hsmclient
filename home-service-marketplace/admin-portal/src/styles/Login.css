@@ -1,7 +1,7 @@
 /* src/styles/Login.css */
 
 /* General Styles */
-body {
+/* body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7fc;
     display: flex;
@@ -9,7 +9,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-  }
+  } */
   
   .login-container {
     background-color: #fff;

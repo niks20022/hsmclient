@@ -59,9 +59,9 @@ const UserManagement = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button className="btn btn-success btn-sm me-2" onClick={() => handleApprove(user.id)}>Approve</button>
-                  <button className="btn btn-danger btn-sm me-2" onClick={() => handleReject(user.id)}>Reject</button>
-                  <button className="btn btn-warning btn-sm" onClick={() => handleResetPassword(user.id)}>Reset Password</button>
+                  <button className="btn btn-success btn-sm m-1 btn-sm "  onClick={() => handleApprove(user.id)}>Approve</button>
+                  <button className="btn btn-danger btn-sm m-1" onClick={() => handleReject(user.id)}>Reject</button>
+                  <button className="btn btn-warning btn-sm m-1" onClick={() => handleResetPassword(user.id)}>Reset Password</button>
                 </td>
               </tr>
             ))}

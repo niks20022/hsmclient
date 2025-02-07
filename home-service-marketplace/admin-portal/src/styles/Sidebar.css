@@ -42,4 +42,19 @@
   .logout-btn:hover {
     background: #c0392b;
   }
-  
+  .sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: #343a40;
+}
+
+.sidebar .nav-link {
+  padding: 10px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: #495057;
+}

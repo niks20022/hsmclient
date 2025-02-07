@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import DashboardLayout from "./pages/Dashboard";
 import Dashboard from "./pages/Dashboard";
 import UserManagement from "./pages/UserManagement";
 import ServiceManagement from "./pages/ServiceManagement";
@@ -12,11 +13,18 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/users" element={<UserManagement />} />
-        <Route path="/services" element={<ServiceManagement />} />
-        <Route path="/disputes" element={<DisputeHandling />} />
+
+        {/* Protected Dashboard Routes with Sidebar */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          {/* <Route index element={<Dashboard />} /> */}
+          <Route  index path="users" element={<UserManagement />} />
+          <Route path="services" element={<ServiceManagement />} />
+          <Route path="disputes" element={<DisputeHandling />} />
+        </Route>
+
+        {/* Catch-All Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

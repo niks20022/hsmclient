@@ -60,9 +60,9 @@ const ServiceManagement = () => {
                 <td>Provider {service.id}</td>
                 <td>${service.id * 10}</td>
                 <td>
-                  <button className="btn btn-primary btn-sm me-2" onClick={() => handleEdit(service.id)}>Edit</button>
-                  <button className="btn btn-danger btn-sm me-2" onClick={() => handleDelete(service.id)}>Delete</button>
-                  <button className="btn btn-warning btn-sm" onClick={() => handleNotifyProvider(service.id)}>Notify Provider</button>
+                  <button className="btn btn-primary btn-sm  m-1" onClick={() => handleEdit(service.id)}>Edit</button>
+                  <button className="btn btn-danger btn-sm m-1" onClick={() => handleDelete(service.id)}>Delete</button>
+                  <button className="btn btn-warning btn-sm m-1" onClick={() => handleNotifyProvider(service.id)}>Notify Provider</button>
                 </td>
               </tr>
             ))}

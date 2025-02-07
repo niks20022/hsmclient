@@ -10,9 +10,9 @@ const SearchServices = () => {
   return (
     <>
       <CustomNavbar />
-      <Container className="mt-4">
+      <Container className="container-sm mt-4">
         <Card
-          className="shadow-lg p-4 border-2 bg-warning"
+          className="  shadow-lg p-4 border-2 bg-warning"
           style={{ backgroundColor: "#f8f9fa" }}
         >
           <Card.Body>
@@ -57,9 +57,7 @@ const SearchServices = () => {
                 {/* Rating Input */}
                 <Col md={4}>
                   <Form.Group>
-                    <Form.Label className="fw-bold">
-                      Min Rating
-                    </Form.Label>
+                    <Form.Label className="fw-bold">Min Rating</Form.Label>
                     <Form.Control
                       type="number"
                       min="1"

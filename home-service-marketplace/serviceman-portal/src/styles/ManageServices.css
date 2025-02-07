@@ -1,0 +1,20 @@
+.manage-services {
+    padding: 20px;
+}
+
+.manage-services h2 {
+    margin-bottom: 20px;
+}
+
+.manage-services .table {
+    margin-top: 20px;
+}
+
+.manage-services .modal-body form {
+    display: flex;
+    flex-direction: column;
+}
+
+.manage-services .modal-body form .form-group {
+    margin-bottom: 15px;
+}

@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import CustomNavbar from "../components/Navbar";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaStar } from "react-icons/fa"; // For star rating in reviews
 
 const Dashboard = () => {
   const customerName = "Niks"; // Fetch from backend in future
+  const navigate = useNavigate(); // ✅ Correct use of useNavigate
 
   return (
     <>
@@ -19,7 +21,12 @@ const Dashboard = () => {
           <p>
             Choose from a variety of services or manage your existing bookings.
           </p>
-          <Button variant="light" size="lg" className="mt-3">
+          <Button
+            variant="light"
+            size="lg"
+            className="mt-3"
+            onClick={() => navigate("/services")}
+          >
             Explore Services
           </Button>
         </Container>
@@ -70,7 +77,9 @@ const Dashboard = () => {
       {/* Reviews Section */}
       <section className="reviews py-5 bg-secondary">
         <Container>
-          <h3 className="text-center mb-4">What Our Customers Are Saying</h3>
+          <h3 className="text-center mb-4 text-white">
+            What Our Customers Are Saying
+          </h3>
           <Row>
             <Col md={4} className="mb-3">
               <Card className="text-center shadow-sm border-0">

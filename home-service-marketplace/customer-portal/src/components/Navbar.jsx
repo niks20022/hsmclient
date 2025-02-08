@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3">
       <div className="container">
         {/* Logo */}
-        <Link to="/" className="navbar-brand">
+        <Link to="/dashboard" className="navbar-brand">
           Home Service
         </Link>
 
@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/dashboard" className="nav-link">
                 Dashboard
               </Link>
             </li>

@@ -29,7 +29,7 @@ const Navbar = () => {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to="/dashboard" className="nav-link">
-                Dashboard
+                Home
               </Link>
             </li>
             <li className="nav-item">

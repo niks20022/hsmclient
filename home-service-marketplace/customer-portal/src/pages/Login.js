@@ -26,7 +26,7 @@ const Login = () => {
     setError("");
     // Simulate API call
     setTimeout(() => {
-      if (data.email === "abc@gmail.com" && data.password === "123456") {
+      if (data.email === "customer@gmail.com" && data.password === "123456") {
         navigate("/dashboard"); // Redirect on success
       } else {
         setError("Invalid email or password. Redirecting to Register...");

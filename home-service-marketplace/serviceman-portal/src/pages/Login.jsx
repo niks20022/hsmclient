@@ -17,7 +17,7 @@ const Login = () => {
 
     // Dummy validation - Replace with backend authentication
     if (
-      formData.email === "abc@gmail.com" &&
+      formData.email === "service@gmail.com" &&
       formData.password === "123"
     ) {
       navigate("/dashboard"); // Redirect to Dashboard

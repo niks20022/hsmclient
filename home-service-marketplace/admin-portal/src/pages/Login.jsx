@@ -24,15 +24,11 @@ const Login = () => {
 
   return (
     <div className="container-fluid min-vh-100 d-flex flex-col justify-content-center align-items-center">
-
-  
       <div
         className="card p-5 shadow border-radious-pill "
-        style={{ maxWidth: "500px", width: "100%" ,height:""}}
+        style={{ maxWidth: "500px", width: "100%" }}
       >
-      <div className="display text-center fs-3">Home Service Management</div>
-
-        
+        <div className="display text-center fs-3">Home Service Management</div>
         <h2 className="text-center text-primary">Admin Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-3">
@@ -61,11 +57,6 @@ const Login = () => {
           <button type="submit" className="btn btn-primary w-100">
             Login
           </button>
-          <div className="text-center mt-3">
-            <a href="#" className="text-decoration-none">
-              Forgot Password?
-            </a>
-          </div>
         </form>
       </div>
     </div>

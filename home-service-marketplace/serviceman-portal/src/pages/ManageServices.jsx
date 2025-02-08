@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import { Button, Form, Modal, Table, Alert } from "react-bootstrap";
 
 const ManageServices = () => {
     const [services, setServices] = useState([
@@ -13,9 +13,13 @@ const ManageServices = () => {
         price: "",
         available: true,
     });
+    const [errors, setErrors] = useState({});
 
     const handleShowModal = () => setShowModal(true);
-    const handleCloseModal = () => setShowModal(false);
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setErrors({});
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +29,18 @@ const ManageServices = () => {
         }));
     };
 
+    const validateForm = () => {
+        let validationErrors = {};
+        if (!newService.name.trim()) validationErrors.name = "Service name is required.";
+        if (!newService.description.trim()) validationErrors.description = "Description is required.";
+        if (!newService.price || isNaN(newService.price) || newService.price <= 0) 
+            validationErrors.price = "Valid price is required.";
+        setErrors(validationErrors);
+        return Object.keys(validationErrors).length === 0;
+    };
+
     const handleAddService = () => {
+        if (!validateForm()) return;
         setServices((prevServices) => [
             ...prevServices,
             { ...newService, id: prevServices.length + 1 },
@@ -95,6 +110,13 @@ const ManageServices = () => {
                     <Modal.Title>Add New Service</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    {Object.keys(errors).length > 0 && (
+                        <Alert variant="danger">
+                            {Object.values(errors).map((error, index) => (
+                                <div key={index}>{error}</div>
+                            ))}
+                        </Alert>
+                    )}
                     <Form>
                         <Form.Group controlId="formServiceName">
                             <Form.Label>Service Name</Form.Label>
@@ -104,6 +126,7 @@ const ManageServices = () => {
                                 value={newService.name}
                                 onChange={handleInputChange}
                                 placeholder="Enter service name"
+                                isInvalid={!!errors.name}
                             />
                         </Form.Group>
                         <Form.Group controlId="formServiceDescription">
@@ -114,6 +137,7 @@ const ManageServices = () => {
                                 value={newService.description}
                                 onChange={handleInputChange}
                                 placeholder="Enter service description"
+                                isInvalid={!!errors.description}
                             />
                         </Form.Group>
                         <Form.Group controlId="formServicePrice">
@@ -124,6 +148,7 @@ const ManageServices = () => {
                                 value={newService.price}
                                 onChange={handleInputChange}
                                 placeholder="Enter price"
+                                isInvalid={!!errors.price}
                             />
                         </Form.Group>
                         <Form.Group controlId="formServiceAvailability">

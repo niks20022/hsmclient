@@ -94,34 +94,7 @@ const SearchServices = () => {
                     </Form.Select>
                   </Form.Group>
                 </Col>
-                <Col md={4}>
-                  <Form.Group>
-                    <Form.Label className="fw-bold">
-                      Max Price: ${price}
-                    </Form.Label>
-                    <Form.Range
-                      min={50}
-                      max={200}
-                      value={price}
-                      onChange={(e) => setPrice(e.target.value)}
-                      className="border-primary"
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={4}>
-                  <Form.Group>
-                    <Form.Label className="fw-bold">Min Rating</Form.Label>
-                    <Form.Control
-                      type="number"
-                      min="1"
-                      max="5"
-                      value={rating}
-                      onChange={(e) => setRating(e.target.value)}
-                      className="border-primary"
-                    />
-                    <p className="mt-1 text-muted">⭐ {rating} Stars</p>
-                  </Form.Group>
-                </Col>
+               
               </Row>
               <div className="text-center">
                 <Button

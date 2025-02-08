@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import SearchServices from "./pages/SearchServices";
 import MyBookings from "./pages/MyBookings";
 import Profile from "./pages/Profile";
+import ServiceProviderList from "./pages/ServiceManList";
 
 const App = () => {
   return (
@@ -23,6 +24,11 @@ const App = () => {
         {/* Protected Routes (Consider using PrivateRoute for authentication) */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/services" element={<SearchServices />} />
+        <Route
+          path="/service-providers/:serviceName"
+          element={<ServiceProviderList />}
+        />
+
         <Route path="/my-bookings" element={<MyBookings />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
